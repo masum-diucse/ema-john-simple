@@ -1,0 +1,11 @@
+.cart h2,h3{
+    text-align: center;
+}
+.price-alignment{
+    text-align: right;
+}
+.price-highlight{
+    color: darkred;
+    font-weight: 600;
+    font-size: 20px;
+}
