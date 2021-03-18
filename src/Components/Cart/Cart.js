@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Cart.css'
 const Cart = (props) => {
     const cart=props.cart;
-    const totalPrice=cart.reduce((totalPrice,product)=>totalPrice+product.price,0);
+    const totalPrice=cart.reduce((totalPrice,product)=>totalPrice+product.price*product.quantity,0);
     let shippingCost=0;
     if(cart.length>0){
         if(totalPrice>35){
@@ -28,7 +29,8 @@ const Cart = (props) => {
             <h2>Order Summary</h2>
             <h3>Items Ordered:{cart.length}</h3>
             <table>
-                <tr>
+            <tbody>
+            <tr>
                     <td>Items:</td>
                     <td className="price-alignment">${formatNumber(totalPrice)}</td>
                 </tr>
@@ -48,7 +50,12 @@ const Cart = (props) => {
                     <td>Order Total:</td>
                     <td className="price-alignment">${Math.round(grandTotal)}</td>
                 </tr>
-            </table>   
+            </tbody>
+            </table> 
+            
+            { 
+                props.children
+            }
         </div>
     );
 };
